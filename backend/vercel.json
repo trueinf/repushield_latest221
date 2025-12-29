@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "npm run vercel-build",
   "routes": [
     {
       "src": "/api/(.*)",
@@ -13,6 +12,7 @@
   ],
   "functions": {
     "api/index.ts": {
+      "runtime": "@vercel/node",
       "maxDuration": 300,
       "memory": 1024
     }
