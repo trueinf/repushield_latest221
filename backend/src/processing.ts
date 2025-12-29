@@ -3,7 +3,8 @@ import { fetchTwitterPosts, fetchRedditPosts, fetchNewsPosts, fetchFacebookPosts
 import { scorePost, scoreToSentiment } from './agents/scoring';
 import { collectEvidence, type EvidenceResult } from './agents/evidence';
 import { generateAdminResponse } from './agents/adminResponse';
-import { storePost, storeEntities, storeMedia, storeEvidence, storeAdminResponse, type PostRow, type EntityRow, type MediaRow } from './database/operations';
+import { storePost, storeEntities, storeMedia, storeEvidence, storeAdminResponse } from './database/operations';
+import type { PostRow, EntityRow, MediaRow } from './database/supabase';
 
 // Extended post data with all metadata for storage
 export interface ExtendedPostData extends Post {

@@ -67,7 +67,7 @@ function convertEvidenceToClaims(evidence: EvidenceRow[], postContent: string): 
         }
       } catch (e) {
         // Ignore parsing errors
-        console.warn(`Error parsing evidence_data for evidence ${ev.id}:`, e);
+        console.warn(`Error parsing evidence_data for evidence ${(ev as any).id || 'unknown'}:`, e);
       }
     }
 

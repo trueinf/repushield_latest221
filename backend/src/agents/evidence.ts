@@ -29,7 +29,7 @@ export async function collectEvidence(postText: string): Promise<EvidenceResult[
       return [];
     }
 
-    const data = await response.json();
+    const data = await response.json() as any;
     const evidence: EvidenceResult[] = [];
 
     // Extract text_blocks (AI-generated content)

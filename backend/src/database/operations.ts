@@ -1,6 +1,9 @@
 // Database operations for storing posts, entities, media, evidence, and responses
 import { supabase, type PostRow, type EntityRow, type MediaRow, type EvidenceRow, type AdminResponseRow } from './supabase';
 
+// Re-export types for use in other modules
+export type { PostRow, EntityRow, MediaRow, EvidenceRow, AdminResponseRow } from './supabase';
+
 // Store a post in the database
 export async function storePost(postData: PostRow): Promise<boolean> {
   if (!supabase) {
