@@ -17,7 +17,21 @@ interface DashboardData {
   topTopics?: Array<{ name: string; volume: number; riskScore: number; sentiment: { positive: number; neutral: number; negative: number } }>;
 }
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+// Ensure API_BASE_URL always ends with /api if it's a full URL, or starts with /api if relative
+const getApiBaseUrl = () => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (!envUrl) return '/api';
+  
+  // If it's a full URL, ensure it ends with /api
+  if (envUrl.startsWith('http')) {
+    return envUrl.endsWith('/api') ? envUrl : `${envUrl}/api`;
+  }
+  
+  // If it's a relative path, ensure it starts with /api
+  return envUrl.startsWith('/api') ? envUrl : `/api${envUrl.startsWith('/') ? '' : '/'}${envUrl}`;
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 const platformColors: Record<string, string> = {
   'twitter': '#3498DB',
@@ -51,7 +65,12 @@ export function Dashboard({ timeRange, onSearch }: DashboardProps) {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`${API_BASE_URL}/dashboard?timeRange=${timeRange}`);
+      const response = await fetch(`${API_BASE_URL}/dashboard?timeRange=${timeRange}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       if (!response.ok) {
         throw new Error(`API error: ${response.status}`);
       }
@@ -146,6 +165,10 @@ export function Dashboard({ timeRange, onSearch }: DashboardProps) {
 
     try {
       const response = await fetch(`${API_BASE_URL}/clear`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

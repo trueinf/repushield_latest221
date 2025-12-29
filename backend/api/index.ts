@@ -22,20 +22,37 @@ import { factCheckPost } from '../src/agents/factcheck.js';
 
 const app: Express = express();
 
-// CORS configuration
+// CORS configuration - allow all origins for now, can restrict later
 const corsOptions = {
-  origin: [
-    'https://repushild.netlify.app',
-    'http://localhost:3000',
-    'http://localhost:5173',
-  ],
+  origin: function (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    const allowedOrigins = [
+      'https://repushild.netlify.app',
+      'http://localhost:3000',
+      'http://localhost:5173',
+      /^https:\/\/.*\.netlify\.app$/,
+    ];
+    
+    if (allowedOrigins.some(allowed => 
+      typeof allowed === 'string' ? allowed === origin : allowed.test(origin)
+    )) {
+      callback(null, true);
+    } else {
+      callback(null, true); // Allow all for now
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
 };
 
 // Middleware
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Handle preflight requests
 app.use(express.json());
 
 // Health check
