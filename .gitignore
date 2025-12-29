@@ -19,12 +19,12 @@ build/
 */build/
 
 # Environment variables
-.env
-.env.local
-.env.production.local
-.env.development.local
-.env.test
-*.local
+# .env
+# .env.local
+# .env.production.local
+# .env.development.local
+# .env.test
+# *.local
 
 # Editor directories and files
 .vscode/*
