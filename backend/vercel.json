@@ -1,6 +1,7 @@
 {
   "version": 2,
   "outputDirectory": "public",
+  "buildCommand": "npm run vercel-build",
   "routes": [
     {
       "src": "/api/(.*)",
