@@ -12,7 +12,6 @@
   ],
   "functions": {
     "api/index.ts": {
-      "runtime": "@vercel/node",
       "maxDuration": 300,
       "memory": 1024
     }
