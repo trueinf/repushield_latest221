@@ -8,7 +8,7 @@
     "dev": "tsx server/index.ts",
     "build": "tsc",
     "start": "node dist/server/index.js",
-    "vercel-build": "tsc"
+    "vercel-build": "mkdir -p public && tsc"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.89.0",
