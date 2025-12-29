@@ -14,11 +14,11 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // Import route handlers
-import { processAndStorePosts } from '../src/processing';
-import { getAdminResponse, getEvidence, getPostById } from '../src/database/operations';
-import { getDashboardData, clearAllData } from '../src/database/operations';
-import { translateToEnglish } from '../src/agents/translate';
-import { factCheckPost } from '../src/agents/factcheck';
+import { processAndStorePosts } from '../src/processing.js';
+import { getAdminResponse, getEvidence, getPostById } from '../src/database/operations.js';
+import { getDashboardData, clearAllData } from '../src/database/operations.js';
+import { translateToEnglish } from '../src/agents/translate.js';
+import { factCheckPost } from '../src/agents/factcheck.js';
 
 const app: Express = express();
 

@@ -1,10 +1,10 @@
 // Main processing workflow: Fetch → Score → Store → Evidence/Response
-import { fetchTwitterPosts, fetchRedditPosts, fetchNewsPosts, fetchFacebookPosts, type Post, type MediaItem } from './services';
-import { scorePost, scoreToSentiment } from './agents/scoring';
-import { collectEvidence, type EvidenceResult } from './agents/evidence';
-import { generateAdminResponse } from './agents/adminResponse';
-import { storePost, storeEntities, storeMedia, storeEvidence, storeAdminResponse } from './database/operations';
-import type { PostRow, EntityRow, MediaRow } from './database/supabase';
+import { fetchTwitterPosts, fetchRedditPosts, fetchNewsPosts, fetchFacebookPosts, type Post, type MediaItem } from './services.js';
+import { scorePost, scoreToSentiment } from './agents/scoring.js';
+import { collectEvidence, type EvidenceResult } from './agents/evidence.js';
+import { generateAdminResponse } from './agents/adminResponse.js';
+import { storePost, storeEntities, storeMedia, storeEvidence, storeAdminResponse } from './database/operations.js';
+import type { PostRow, EntityRow, MediaRow } from './database/supabase.js';
 
 // Extended post data with all metadata for storage
 export interface ExtendedPostData extends Omit<Post, 'media'> {

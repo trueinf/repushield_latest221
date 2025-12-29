@@ -1,5 +1,5 @@
 // Database operations for storing posts, entities, media, evidence, and responses
-import { supabase, type PostRow, type EntityRow, type MediaRow, type EvidenceRow, type AdminResponseRow } from './supabase';
+import { supabase, type PostRow, type EntityRow, type MediaRow, type EvidenceRow, type AdminResponseRow } from './supabase.js';
 
 // Re-export types for use in other modules
 export type { PostRow, EntityRow, MediaRow, EvidenceRow, AdminResponseRow } from './supabase';

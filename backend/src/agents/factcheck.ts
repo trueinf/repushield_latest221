@@ -1,7 +1,7 @@
 // Fact-check agent: Uses evidence data directly from database to display fact-check details
 
-import { getEvidence } from '../database/operations';
-import { EvidenceRow } from '../database/supabase';
+import { getEvidence } from '../database/operations.js';
+import { EvidenceRow } from '../database/supabase.js';
 
 export interface FactCheckClaim {
   id: string;

@@ -1,7 +1,7 @@
 // Admin response generation agent: Generates admin-style responses using OpenAI
 
 import OpenAI from 'openai';
-import { collectEvidence, type EvidenceResult } from './evidence';
+import { collectEvidence, type EvidenceResult } from './evidence.js';
 
 const openaiApiKey = process.env.OPENAI_API_KEY;
 
