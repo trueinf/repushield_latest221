@@ -1,5 +1,5 @@
 // Main processing workflow: Fetch → Score → Store → Evidence/Response
-import { fetchTwitterPosts, fetchRedditPosts, fetchNewsPosts, fetchFacebookPosts, type Post } from './services';
+import { fetchTwitterPosts, fetchRedditPosts, fetchNewsPosts, fetchFacebookPosts, type Post, type MediaItem } from './services';
 import { scorePost, scoreToSentiment } from './agents/scoring';
 import { collectEvidence, type EvidenceResult } from './agents/evidence';
 import { generateAdminResponse } from './agents/adminResponse';
@@ -7,7 +7,7 @@ import { storePost, storeEntities, storeMedia, storeEvidence, storeAdminResponse
 import type { PostRow, EntityRow, MediaRow } from './database/supabase';
 
 // Extended post data with all metadata for storage
-export interface ExtendedPostData extends Post {
+export interface ExtendedPostData extends Omit<Post, 'media'> {
   // Twitter-specific fields
   rest_id?: string;
   id_str?: string;
@@ -41,9 +41,9 @@ export interface ExtendedPostData extends Post {
   user_protected?: boolean;
   user_account_created_at?: Date;
   
-  // Entities and media
+  // Entities and media - use MediaItem from Post for compatibility
   entities?: EntityRow[];
-  media?: MediaRow[];
+  media?: MediaItem[]; // Keep as MediaItem[] for compatibility with Post interface
   
   // Raw API response for platform-specific fields
   raw_data?: any;
@@ -124,7 +124,7 @@ export async function processAndStorePosts(keyword: string): Promise<{ posts: Po
       }
       
       // Also store entities from extended post data (if any)
-      const extendedPost = post as ExtendedPostData;
+      const extendedPost = post as unknown as ExtendedPostData;
       if (extendedPost.entities && extendedPost.entities.length > 0) {
         entitiesToStore.push(...extendedPost.entities);
       }
@@ -255,7 +255,7 @@ export async function processAndStorePosts(keyword: string): Promise<{ posts: Po
 
 // Convert Post interface to PostRow for database
 function convertPostToPostRow(post: Post, entity: string): PostRow {
-  const extendedPost = post as ExtendedPostData;
+  const extendedPost = post as unknown as ExtendedPostData;
   // Try to parse timestamp, fallback to current date if parsing fails
   let timestamp: Date;
   try {
