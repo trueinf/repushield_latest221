@@ -150,18 +150,19 @@ export async function processAndStorePosts(keyword: string): Promise<{ posts: Po
       }
       
       // Also store media from extended post data (if any)
-      // Remove thumbnail_url if present since database schema doesn't include it
+      // Note: ExtendedPostData.media is MediaItem[], so convert to MediaRow
       if (extendedPost.media && extendedPost.media.length > 0) {
-        for (const m of extendedPost.media) {
-          const mediaRow: MediaRow = {
+        for (const mediaItem of extendedPost.media) {
+          // Convert MediaItem to MediaRow format
+          mediaToStore.push({
             post_id: post.id,
-            media_url_https: m.media_url_https || null,
-            media_type: m.media_type || null,
-            width: m.width || null,
-            height: m.height || null,
-            video_variants: m.video_variants || null,
-          };
-          mediaToStore.push(mediaRow);
+            media_url_https: mediaItem.url,
+            media_type: mediaItem.type === 'image' ? 'photo' : 
+                       (mediaItem.type === 'video' ? 'video' : 'gif'),
+            width: null,
+            height: null,
+            video_variants: null,
+          });
         }
       }
       
