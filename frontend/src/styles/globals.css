@@ -1,0 +1,265 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  
+  /* Sprout Social inspired color palette */
+  /* Sidebar - Dark charcoal */
+  --sidebar-dark: #3D4A52;
+  --sidebar-darker: #2F3A40;
+  --sidebar-light: #505D65;
+  
+  /* Primary - Professional blue */
+  --primary-blue: #0084BF;
+  --primary-blue-hover: #006A9D;
+  --primary-blue-light: #E6F4FA;
+  
+  /* Neutrals - Clean grays */
+  --neutral-900: #1A1F26;
+  --neutral-800: #2D3640;
+  --neutral-700: #3D4A52;
+  --neutral-600: #5C6C75;
+  --neutral-500: #7A8A94;
+  --neutral-400: #9FAAB3;
+  --neutral-300: #C4CDD3;
+  --neutral-200: #E0E6EA;
+  --neutral-100: #F0F3F5;
+  --neutral-50: #F7F9FA;
+  
+  /* Status colors - More muted */
+  --status-success: #2ECC71;
+  --status-warning: #F39C12;
+  --status-danger: #E74C3C;
+  --status-info: #3498DB;
+  
+  /* Risk colors */
+  --risk-high: #E74C3C;
+  --risk-medium: #F39C12;
+  --risk-low: #2ECC71;
+  
+  /* Legacy mappings for compatibility */
+  --background: var(--neutral-50);
+  --foreground: var(--neutral-900);
+  --card: #ffffff;
+  --card-foreground: var(--neutral-900);
+  --popover: #ffffff;
+  --popover-foreground: var(--neutral-900);
+  --primary: var(--primary-blue);
+  --primary-foreground: #ffffff;
+  --secondary: var(--neutral-100);
+  --secondary-foreground: var(--neutral-900);
+  --muted: var(--neutral-200);
+  --muted-foreground: var(--neutral-600);
+  --accent: var(--primary-blue);
+  --accent-foreground: #ffffff;
+  --destructive: var(--risk-high);
+  --destructive-foreground: #ffffff;
+  --border: var(--neutral-200);
+  --input: transparent;
+  --input-background: #ffffff;
+  --switch-background: var(--neutral-400);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: var(--primary-blue);
+  --chart-1: var(--primary-blue);
+  --chart-2: var(--status-info);
+  --chart-3: var(--status-warning);
+  --chart-4: var(--status-success);
+  --chart-5: var(--status-danger);
+  --radius: 0.5rem;
+  --sidebar: var(--sidebar-dark);
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: var(--primary-blue);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--sidebar-light);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.05);
+  --sidebar-ring: var(--primary-blue);
+}
+
+.dark {
+  --background: #1A1F26;
+  --foreground: #E0E6EA;
+  --card: #2D3640;
+  --card-foreground: #E0E6EA;
+  --popover: #2D3640;
+  --popover-foreground: #E0E6EA;
+  --primary: var(--primary-blue);
+  --primary-foreground: #ffffff;
+  --secondary: #3D4A52;
+  --secondary-foreground: #E0E6EA;
+  --muted: #3D4A52;
+  --muted-foreground: var(--neutral-400);
+  --accent: var(--primary-blue);
+  --accent-foreground: #ffffff;
+  --destructive: var(--risk-high);
+  --destructive-foreground: #ffffff;
+  --border: #3D4A52;
+  --input: #3D4A52;
+  --ring: var(--primary-blue);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: var(--primary-blue);
+  --chart-2: var(--status-info);
+  --chart-3: var(--status-warning);
+  --chart-4: var(--status-success);
+  --chart-5: var(--status-danger);
+  --sidebar: #2D3640;
+  --sidebar-foreground: #E0E6EA;
+  --sidebar-primary: var(--primary-blue);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #3D4A52;
+  --sidebar-accent-foreground: #E0E6EA;
+  --sidebar-border: #3D4A52;
+  --sidebar-ring: var(--primary-blue);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Custom Repushield/Sprout-inspired colors */
+  --color-sidebar-dark: var(--sidebar-dark);
+  --color-sidebar-darker: var(--sidebar-darker);
+  --color-sidebar-light: var(--sidebar-light);
+  --color-primary-blue: var(--primary-blue);
+  --color-primary-blue-hover: var(--primary-blue-hover);
+  --color-primary-blue-light: var(--primary-blue-light);
+  --color-neutral-900: var(--neutral-900);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-50: var(--neutral-50);
+  --color-status-success: var(--status-success);
+  --color-status-warning: var(--status-warning);
+  --color-status-danger: var(--status-danger);
+  --color-status-info: var(--status-info);
+  --color-risk-high: var(--risk-high);
+  --color-risk-medium: var(--risk-medium);
+  --color-risk-low: var(--risk-low);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=' text-']), :not(:has([class^='text-'])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.6;
+    }
+
+    label {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Custom utility classes for Sprout-style design */
+@layer utilities {
+  .shadow-card {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+  }
+  
+  .shadow-card-hover {
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.12);
+  }
+}
